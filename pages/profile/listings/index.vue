@@ -1,10 +1,18 @@
 <script setup>
 definePageMeta({
     layout: "custom",
-    // middleware: ["auth"],
 });
 
-const { listings } = useCars();
+const user = useSupabaseUser();
+
+const { data: listings, refresh } = await useFetch(
+    `/api/car/listings/user/${user.value.id}`
+);
+const handleDelete = async (id) => {
+    await $fetch(`/api/car/listings/${id}`, { method: "DELETE" });
+    listings.value = listings.value.filter((listing) => listing.id !== id);
+    // refresh();
+};
 </script>
 
 <template>
@@ -22,6 +30,7 @@ const { listings } = useCars();
                 v-for="listing in listings"
                 :key="listing.id"
                 :listing="listing"
+                @handle-delete="handleDelete"
             />
         </div>
     </div>

@@ -9,7 +9,11 @@
             @click="emit('favourite', car.id)"
         />
         <div class="flex h-full">
-            <NuxtImg :src="car.url" :alt="car.name" class="w-[300px] h-full" />
+            <NuxtImg
+                :src="car.image"
+                :alt="car.name"
+                class="w-[300px] h-full"
+            />
             <div class="p-4 flex flex-col">
                 <div>
                     <h1

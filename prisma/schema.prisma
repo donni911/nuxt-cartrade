@@ -14,13 +14,14 @@ datasource db {
 model Car {
   id            Int   @id @default(autoincrement())
   name          String
+  year          Int
   numberOfSeats Int
   miles         Int
   price         Int
-  image         Int
+  image         String
   features      String[]
   description   String
-  city          Int
+  city          String
   model         String
   make          String
   listerId      String
@@ -34,5 +35,5 @@ model Message {
   phone         String
   message       String
   listingId     Int
-  listing       Car   @relation(fields: [listingId] , references: [id] )
+  listing       Car   @relation(fields: [listingId] , references: [id] ,onDelete: Cascade)
 }
