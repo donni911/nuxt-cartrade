@@ -10,7 +10,7 @@
         />
         <div class="flex h-full">
             <NuxtImg
-                :src="car.image"
+                :src="`${config.public.supabase.url}/storage/v1/object/public/Images/${car.image}`"
                 :alt="car.name"
                 class="w-[300px] h-full"
             />
@@ -38,6 +38,8 @@ import heartFilled from "@/assets/heartFilled.png";
 import heartOutline from "@/assets/heartOutline.png";
 
 const props = defineProps({ car: Object, favourite: Boolean });
+
+const config = useRuntimeConfig();
 
 const emit = defineEmits("favourite");
 </script> 
