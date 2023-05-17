@@ -6,4 +6,7 @@ export default defineNuxtConfig({
     "@nuxt/image-edge",
     "@vueuse/nuxt",
   ],
+  nitro: {
+    preset: "firebase",
+  },
 });
